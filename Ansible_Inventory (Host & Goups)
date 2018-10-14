@@ -1,0 +1,32 @@
+files store in /etc/ansible/hosts
+It is simple fomate of storing host and there associated group
+Brackets define a group.
+Hosts can be member of multiple groups.
+Hosts can be without a group.
+######## Host and Group#################
+host1.example.com
+[India-server]
+host1.example.com:0022
+host2.example.com
+[all-India-server]
+host1.example.com:0022
+host2.example.com
+host3.a.com
+host4.b.com
+For a large number of hosts that has a structured hostname ranges can be added to the host file. These ranges can be numeric or alphabetic for example:
+edg
+
+host[1:5].example.com
+host1[a:d].example.com
+
+################Host Variables #############################
+masternode ansible_ssh_port=0022 ansible_ssh_host=13.127.x.x
+
+##############Group Variables############################################
+[indiaserver]
+host1.example.com:0022
+host2.example.com=13.127.x.x
+host3.a.com=13.127.x.x
+host4.a.com=13.127.x.x
+
+
