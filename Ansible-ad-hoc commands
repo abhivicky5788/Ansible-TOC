@@ -2,6 +2,8 @@ what is gathering facts?
 This module is automatically called by playbooks to gather useful variables about remote hosts that can be used in playbooks. 
 It can also be executed directly by /usr/bin/ansible to check what variables are available to a host. 
 Ansible provides many facts about the system, automatically.
+
+ansible all -m setup
 #########shell commands###########################
 ansible -m shell -a "uptime" all
 ansible -m shell -a "df -h" all
