@@ -1,0 +1,9 @@
+host1.example.com
+
+[appserver]
+appserver1.example.com
+appserver2.example.com
+
+[webserver]
+webserver1.example.com  
+webserver2.example.com
