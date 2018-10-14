@@ -1,0 +1,14 @@
+ansible Inventory Aliases
+
+An alias helps you define name for a host. In our example, we’ve specified IP addresses of the hosts in our inventory file. If we’d like to ping only one system, we’ll have to do:
+
+$ ansible -m ping 172.29.33.22
+That doesn’t look cool. Let’s set aliases for our two hosts:
+
+$ cat /etc/ansible/hosts
+[servers]
+host1 ansible_host=172.29.33.22
+host2 ansible_host=172.29.33.23
+And now we can simply do:
+
+$ ansible -m ping host1
