@@ -1,6 +1,6 @@
 Create ansible role with galaxy comand
 ansible galaxy init /ect/ansible/roles/apache2 --offline
-create directory structure for roles
+############create directory structure for roles################
 
 task
 handerlers
@@ -9,19 +9,38 @@ vars
 files
 templates
 meta
- ---
-- hosts: all
-  tasks:
-  - name: Install httpd Package
+first move on ansible role directory and start workwith yml file
+# /ect/ansible/roles/apache2
+under apache2 directory structure 
+1.tasks:
+edit main.yml file that available define task for execution.
+altogether we can add all our task in the file or just break the codes even more as below using "import_task" statement.
+
+#task file for /etc/ansible/roles/apache
+-import_tasks:install.yml
+-import_tasks:configure.yml
+-import_tasks:service.yml
+
+####go to install.yml file###### 
+
+- name: Install httpd Package
     yum: name=httpd state=latest
-  - name: Copy httpd configuration file
+########go to configure.yml file##############
+ - name: Copy httpd configuration file
     copy: src=/data/httpd.original dest=/etc/httpd/conf/httpd.conf
   - name: Copy index.html file
     copy: src=/data/index.html dest=/var/www/html
     notify:
     - restart apache
-  - name: Start and Enable httpd service
+    
+    ####go to service.yml file#############
+    
+- name: Start and Enable httpd service
     service: name=httpd state=restarted enabled=yes
+ ########## Handlers ##########################
+ 
+  
   handlers:
   - name: restart apache
     service: name=httpd state=restarted
+    
